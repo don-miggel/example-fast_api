@@ -17,7 +17,7 @@ router = APIRouter(
 
 @router.get("/", response_model=List[schemas.PostOut])
 #@router.get("/")
-def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user),
+def get_posts(db: Session = Depends(get_db),
               limit: int = 3, skip: int = 0, search: Optional[str] = ''):
 #   cursor.execute(""" Select * from posts """)
 #   posts = cursor.fetchall()
@@ -29,7 +29,7 @@ def get_posts(db: Session = Depends(get_db), current_user: int = Depends(oauth2.
     return posts
 
 @router.get("/{id}", response_model=schemas.PostOut)
-def get_posts_(id: int, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+def get_posts_(id: int, db: Session = Depends(get_db)):
 #   cursor.execute(""" Select * from posts where id =%s """, (str(id)) )
 #   post = cursor.fetchone()
 #   post = db.query(models.Post).filter(models.Post.id == id).first()
